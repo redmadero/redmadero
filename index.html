@@ -5,90 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Red Madero</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
- <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src='https://connect.facebook.net/en_US/fbevents.js';
-    s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script');
-    fbq('init', '2404961403271502');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=2404961403271502&ev=PageView&noscript=1"/>
-  </noscript>
-
-
-  <!-- End Meta Pixel Code -->
 
   <style>
+    /* ===== RESET & BASE ===== */
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
-      color: white;
+      background: radial-gradient(circle at top, #111 0%, #000 70%);
+      color: #fff;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
       text-align: center;
-      padding: 3rem 1rem 2rem;
+      padding: 60px 5vw;
+      overflow-x: hidden;
+      min-height: 100vh;
     }
 
-    h1 {
+    .container {
+      max-width: 720px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .glow-bg {
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 1000px;
+      background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
+      z-index: 1;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    /* ===== TITLES ===== */
+    .title {
       color: #d4af37;
-      font-size: 1.9rem;
       font-weight: 800;
-      margin-bottom: 0.3rem;
-      line-height: 1.2;
-      margin-top: 0.5rem;
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      text-shadow: 0 0 25px rgba(212, 175, 55, 0.7);
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
     }
 
-    h2 {
-      font-size: 1.2rem;
-      color: white;
-      margin-top: 0;
-      margin-bottom: 1.5rem;
+    .subtitle {
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
       font-weight: 700;
+      color: #fff;
+      margin-bottom: 25px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.1);
     }
 
     .divider {
-      width: 60px;
-      height: 2px;
+      width: 80px;
+      height: 3px;
       background: linear-gradient(to right, transparent, #d4af37, transparent);
-      margin: 0 auto 2rem;
+      margin: 20px auto 30px auto;
+      border-radius: 3px;
     }
 
-    .features {
-      display: flex;
-      flex-direction: column;
-      gap: 1.3rem;
-      max-width: 320px;
-      margin-bottom: 3rem;
+    /* ===== LIST ===== */
+    .items {
+      text-align: left;
+      margin: 0 auto 40px auto;
+      display: inline-block;
+      max-width: 90%;
     }
 
-    .feature {
+    .item {
       display: flex;
       align-items: flex-start;
-      gap: 0.6rem;
-      text-align: left;
+      gap: 10px;
+      color: #ccc;
+      font-size: clamp(0.95rem, 3vw, 1.1rem);
+      margin-bottom: 15px;
+      line-height: 1.5;
     }
 
-    .feature .icon {
+    .item::before {
+      content: "★";
       color: #d4af37;
-      font-size: 1.2rem;
-      line-height: 1.4;
-    }
-
-    .feature p {
-      margin: 0;
-      line-height: 1.4;
+      font-size: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
     }
 
     .highlight {
@@ -96,60 +99,92 @@
       font-weight: 700;
     }
 
-    .cta {
-      background: #d4af37;
-      color: black;
-      font-weight: 700;
-      border: none;
-      padding: 1.1rem 2rem;
-      border-radius: 40px;
-      cursor: pointer;
-      font-size: 1rem;
-      display: flex;
+    /* ===== CTA BUTTON ===== */
+    .cta-button {
+      background: linear-gradient(135deg, #d4af37, #b8860b);
+      color: #000;
+      padding: 18px 40px;
+      border-radius: 50px;
+      font-weight: 800;
+      text-decoration: none;
+      font-size: clamp(1rem, 4vw, 1.2rem);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.7);
+      transition: all 0.3s ease-in-out;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
-      text-decoration: none;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      gap: 10px;
+      width: 100%;
+      max-width: 350px;
     }
 
-    .cta:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+    .cta-button:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 40px rgba(255, 215, 0, 1);
     }
 
-    .cta img {
-      width: 22px;
-      height: 22px;
+    .cta-button img {
+      width: clamp(22px, 6vw, 28px);
+      height: clamp(22px, 6vw, 28px);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      color: #888;
+      font-size: 14px;
+      margin-top: 60px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 15px;
+      max-width: 700px;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 480px) {
+      body {
+        padding: 40px 6vw;
+      }
+
+      .glow-bg {
+        width: 600px;
+        height: 600px;
+        top: -150px;
+        filter: blur(60px);
+      }
+
+      .items {
+        max-width: 100%;
+      }
+
+      .cta-button {
+        padding: 16px 30px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>SUMATE COMO CAJERO<br>INDEPENDIENTE</h1>
-  <h2>GANÁ HASTA EL 85%</h2>
-  <div class="divider"></div>
+  <div class="glow-bg"></div>
+  <div class="container">
 
-  <div class="features">
-    <div class="feature">
-      <span class="icon">★</span>
-      <p>Accedé a <span class="highlight">más de 50 plataformas</span> con activación inmediata.</p>
+    <h1 class="title">SUMATE COMO CAJERO INDEPENDIENTE</h1>
+    <h2 class="subtitle">GANÁ HASTA EL 85%</h2>
+
+    <div class="divider"></div>
+
+    <div class="items">
+      <div class="item">Accedé a <span class="highlight">más de 50 plataformas</span> con activación inmediata.</div>
+      <div class="item">Todo <span class="highlight">verificado y con respaldo real</span> en premios.</div>
+      <div class="item">Formá parte de la <span class="highlight">red más segura del país.</span></div>
     </div>
-    <div class="feature">
-      <span class="icon">★</span>
-      <p>Todo <span class="highlight">verificado y con respaldo real</span> en premios.</p>
+
+    <a class="cta-button" href="https://wa.link/wc4nhl" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+      COMUNICATE AHORA
+    </a>
+
+    <div class="footer">
+      © 2025 Red Madero · Todos los derechos reservados.
     </div>
-    <div class="feature">
-      <span class="icon">★</span>
-      <p>Formá parte de la <span class="highlight">red más segura del país.</span></p>
-    </div>
+
   </div>
-
-  <a href="https://wa.link/wc4nhl" target="_blank" rel="noopener noreferrer" class="cta">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    COMUNICATE AHORA
-  </a>
-</body>
-</html>
 </body>
 </html>
